@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f5f5f5;
 }
 
 header {
@@ -15,25 +16,43 @@ header {
     float: left;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+nav {
+    text-align: center;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
+.menu-item {
     color: #333;
     text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
+.menu-item:hover {
+    background-color: #ddd;
+}
+
+.sub-menu-category {
+    margin-top: 10px;
+}
+
+.sub-menu-item {
+    display: block;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sub-menu-item:hover {
+    background-color: #ddd;
+}
+
+.content {
+    padding: 20px;
+    animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
