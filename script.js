@@ -17,10 +17,12 @@ const subMenuItems = {
 };
 
 const menu = document.getElementById('menu');
+
 mainMenuItems.forEach(item => {
     const menuItem = document.createElement('a');
     menuItem.textContent = item.label;
     menuItem.href = '#';
+    menuItem.classList.add('menu-item');
     menuItem.addEventListener('click', async (event) => {
         event.preventDefault();
         await loadPage(item.page);
@@ -36,21 +38,26 @@ async function loadPage(page) {
         }
         const html = await response.text();
         document.getElementById('content').innerHTML = html;
+        document.getElementById('content').classList.add('fade-in');
     } catch (error) {
         console.error(error);
     }
 }
 
 const subMenu = document.createElement('ul');
+
 for (const category in subMenuItems) {
     const categoryItem = document.createElement('li');
     categoryItem.textContent = category;
+    categoryItem.classList.add('sub-menu-category');
+
     const subMenuList = document.createElement('ul');
     subMenuItems[category].forEach(subItem => {
         const subMenuItem = document.createElement('li');
         const link = document.createElement('a');
         link.textContent = subItem.label;
         link.href = '#';
+        link.classList.add('sub-menu-item');
         link.addEventListener('click', async (event) => {
             event.preventDefault();
             await loadPage(subItem.page);
@@ -58,7 +65,9 @@ for (const category in subMenuItems) {
         subMenuItem.appendChild(link);
         subMenuList.appendChild(subMenuItem);
     });
+
     categoryItem.appendChild(subMenuList);
     subMenu.appendChild(categoryItem);
 }
+
 menu.appendChild(subMenu);
